@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+	version="4.0">
+	<display-name>web-ex</display-name>
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- JSP file Mapping -->
+	<servlet>
+		<servlet-name>index</servlet-name>
+		<jsp-file>/index.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>index</servlet-name>
+		<url-pattern>/index</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>header</servlet-name>
+		<jsp-file>/header.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>header</servlet-name>
+		<url-pattern>/header</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>footer</servlet-name>
+		<jsp-file>/footer.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>footer</servlet-name>
+		<url-pattern>/footer</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>joinForm</servlet-name>
+		<jsp-file>/joinForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>joinForm</servlet-name>
+		<url-pattern>/join</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>joinFormPro</servlet-name>
+		<jsp-file>/joinFormPro.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>joinFormPro</servlet-name>
+		<url-pattern>/api/user/join</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>mypage</servlet-name>
+		<jsp-file>/mypage.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>mypage</servlet-name>
+		<url-pattern>/mypage</url-pattern>
+	</servlet-mapping>
+
+</web-app>

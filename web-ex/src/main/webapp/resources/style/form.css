@@ -1,0 +1,105 @@
+@charset "UTF-8";
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	
+	min-height: 50vh;
+	
+	margin: 0 auto auto auto;
+	width: 60vw;
+	min-width: 400px;
+	max-width: 550px;
+}
+
+.error-msg {
+	padding-left: 20px;
+	margin: 10px auto 20px 10px;
+}
+
+.error-msg li {
+	display: none;
+	color: red;
+	font-size: 0.8em;
+}
+
+.group {
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.group > input:first-child {
+	border-radius: 10px 10px 0 0;
+}
+.group > input:last-child {
+	border-radius: 0 0 10px 10px;
+}
+
+#gender {
+	display: flex;
+	justify-content: center;
+	border: solid 1px lightgrey;	
+	padding: 15px;
+}
+
+#gender > label > div {
+	text-align: center;
+	font-size: 0.8em;
+	width: 110px;
+	border: solid 1px lightgrey;
+	padding: 5px;	
+}
+
+#gender > label:first-child > div {
+	border-radius: 5px 0 0 5px;
+}
+
+#gender > label:last-child > div {
+	border-radius: 0 5px 5px 0;
+}
+
+#country {
+	border: solid 1px lightgrey;	
+	padding: 15px;
+}
+
+#country > select {
+	border: none;
+	width: 100%;
+	outline: none;
+}
+
+#btn-submit {
+	color: whitesmoke;
+	border: none;
+	border-radius: 10px;
+	background-color: #0aaa5cff;
+}
+
+#gender div,
+#submit:focus,
+#country > select:focus
+{
+	cursor: pointer;
+}
+
+input {
+	padding: 15px;
+	border: solid 1px lightgrey;
+	outline: none;
+}
+
+input[type="radio"] {
+	display: none;
+}
+
+input:focus,
+#male:checked ~ #gender > #for-male > div, 
+#female:checked ~ #gender > #for-female > div, 
+#other:checked ~ #gender > #for-other > div
+{
+	border-width: 2px;
+	border-color: #0aaa5cff;
+}
