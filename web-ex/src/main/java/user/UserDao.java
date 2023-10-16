@@ -1,36 +1,30 @@
 package user;
 
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
+
+import util.DBManager;
 
 public class UserDao {
 	
-	private ArrayList<User> list;
+	private Connection conn;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
 	
-	// GoF 디자인 패턴 중 > 생성 패턴 중 하나인 > Singleton Pattern
-	
-	// 1) 생성자를 private로 돌림
-	// ㄴ new 키워드 사용 X
-	// ㄴ 클래스 외부에서 객체를 생성할 수 없도록 차단 
-	private UserDao() {
-		list = new ArrayList<>();
-	}
-	
-	// 2) 단일 객체를 생성함 
-	// ㄴ 클래스 내부에서만 private 생성자를 사용할 수 O 
-	// ㄴ static 영역에 둠 
+	private UserDao() {}
 	private static UserDao instance = new UserDao();
-	
-	// 3) public static getter 제공 
-	// ㄴ UserDao 객체를 얻을 수 있는 유일한 메소드 
 	public static UserDao getInstance() {
 		return instance;
 	}
 	
-	
-	// User에 대한 CRUD 메소드를 구현 
-	// ㄴ 저장소 : list
-	
+	// DB에 연동 
 	// 1) Create
+	/*
 	public boolean createUser(UserRequestDto user) {
 		if(isDuplicatedUser(user)) 
 			return false;
@@ -66,25 +60,54 @@ public class UserDao {
 		
 		return id;
 	}
+	*/
 	
 	// 2) Read
 	public UserResponseDto findById(int id) {
-		for(int i=0; i<list.size(); i++) {
-			User user = list.get(i);
-			if(user.getId() == id)
-				return new UserResponseDto(user);
+		UserResponseDto result = null;
+		conn = DBManager.getConnection();
+		
+		if(conn != null) {
+			String sql = "SELECT * FROM `user` WHERE id=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					String username = rs.getString(2);
+					String password = rs.getString(3);
+					String name = rs.getString(4);
+					String email = rs.getString(5);
+					String phone = rs.getString(6);
+					String country = rs.getString(7);
+					String birth = rs.getString(8);
+					int gender = rs.getInt(9);
+					
+					String genderStr = "";
+					if(gender == 1) genderStr = "male";
+					else if(gender == 2) genderStr = "female";
+					else if(gender == 3) genderStr = "other";
+					
+					result = new UserResponseDto(new User(id, username, password, name, email, phone, country, birth, genderStr));
+					System.out.println("result : " + result);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
-		return null;
+		
+		return result;
 	}
 	
 	public UserResponseDto findByUsername(String username) {
-		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getUsername().equals(username))
-				return new UserResponseDto(list.get(i));
-		}
 		
 		return null;
 	}
+	/*
 	
 	private User getUser(UserRequestDto userDto) {
 		User user = null;
@@ -145,5 +168,6 @@ public class UserDao {
 	public int getSize() {
 		return list.size();
 	}
+	*/
 
 }

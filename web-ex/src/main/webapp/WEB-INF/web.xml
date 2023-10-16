@@ -13,6 +13,49 @@
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
 
+	<!-- Servlet Mapping -->
+	
+	<servlet>
+		<servlet-name>joinFormAction</servlet-name>
+		<servlet-class>user.controller.JoinFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>joinFormAction</servlet-name>
+		<url-pattern>/api/user/join</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>leaveFormAction</servlet-name>
+		<servlet-class>user.controller.LeaveFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>leaveFormAction</servlet-name>
+		<url-pattern>/api/user/leave</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>loginFormAction</servlet-name>
+		<servlet-class>user.controller.LoginFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginFormAction</servlet-name>
+		<url-pattern>/api/user/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>logoutAction</servlet-name>
+		<servlet-class>user.controller.LogoutAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>logoutAction</servlet-name>
+		<url-pattern>/api/user/logout</url-pattern>
+	</servlet-mapping>
+	
+
 	<!-- JSP file Mapping -->
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -53,16 +96,6 @@
 		<servlet-name>joinForm</servlet-name>
 		<url-pattern>/join</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>joinFormPro</servlet-name>
-		<jsp-file>/joinFormPro.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>joinFormPro</servlet-name>
-		<url-pattern>/api/user/join</url-pattern>
-	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>loginForm</servlet-name>
@@ -73,28 +106,8 @@
 		<servlet-name>loginForm</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>loginFormPro</servlet-name>
-		<jsp-file>/loginFormPro.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>loginFormPro</servlet-name>
-		<url-pattern>/api/user/login</url-pattern>
-	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>logoutPro</servlet-name>
-		<jsp-file>/logoutPro.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>logoutPro</servlet-name>
-		<url-pattern>/api/user/logout</url-pattern>
-	</servlet-mapping>
-	
-		<servlet>
 		<servlet-name>leaveForm</servlet-name>
 		<jsp-file>/leaveForm.jsp</jsp-file>
 	</servlet>
@@ -102,16 +115,6 @@
 	<servlet-mapping>
 		<servlet-name>leaveForm</servlet-name>
 		<url-pattern>/leave</url-pattern>
-	</servlet-mapping>
-
-	<servlet>
-		<servlet-name>leaveFormPro</servlet-name>
-		<jsp-file>/leaveFormPro.jsp</jsp-file>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>leaveFormPro</servlet-name>
-		<url-pattern>/api/user/leave</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
