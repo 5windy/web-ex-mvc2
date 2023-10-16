@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-		<h1>The Joeun JSP MVC1</h1>
+		<h1><a href="/">The Joeun JSP MVC1</a></h1>
 	</header>
 	<nav>
 		<ul>

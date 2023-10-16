@@ -10,8 +10,7 @@
 <jsp:include page="/header"/>
 <body>
 	<section>
-	<!-- 커밋 메세지 : Update Join 10/13 15:57 김지연 -->
-	
+		<h2>회원가입</h2>
 		<form method="POST" action="/api/user/join" id="form">
 			<div>
 	

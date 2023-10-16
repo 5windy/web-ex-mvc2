@@ -63,6 +63,56 @@
 		<servlet-name>joinFormPro</servlet-name>
 		<url-pattern>/api/user/join</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>loginForm</servlet-name>
+		<jsp-file>/loginForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginForm</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginFormPro</servlet-name>
+		<jsp-file>/loginFormPro.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginFormPro</servlet-name>
+		<url-pattern>/api/user/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>logoutPro</servlet-name>
+		<jsp-file>/logoutPro.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>logoutPro</servlet-name>
+		<url-pattern>/api/user/logout</url-pattern>
+	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>leaveForm</servlet-name>
+		<jsp-file>/leaveForm.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>leaveForm</servlet-name>
+		<url-pattern>/leave</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>leaveFormPro</servlet-name>
+		<jsp-file>/leaveFormPro.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>leaveFormPro</servlet-name>
+		<url-pattern>/api/user/leave</url-pattern>
+	</servlet-mapping>
 
 	<servlet>
 		<servlet-name>mypage</servlet-name>

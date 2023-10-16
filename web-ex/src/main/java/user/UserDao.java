@@ -90,7 +90,7 @@ public class UserDao {
 		User user = null;
 		
 		for(int i=0; i<list.size(); i++) {
-			if(list.get(i).getUsername() == userDto.getUsername()) {
+			if(list.get(i).getUsername().equals(userDto.getUsername())) {
 				user = list.get(i);
 				System.out.println("user : " + System.identityHashCode(user));
 			}

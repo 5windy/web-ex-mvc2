@@ -1,6 +1,7 @@
 package user;
 
 public class User {
+	
 	private int id; // Entity PK 
 	private String username;
 	private String password;

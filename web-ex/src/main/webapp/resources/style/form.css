@@ -3,11 +3,11 @@
 form {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-around;
+	justify-content: space-between;
 	
 	min-height: 50vh;
 	
-	margin: 0 auto auto auto;
+	margin: 20px auto 20px auto;
 	width: 60vw;
 	min-width: 400px;
 	max-width: 550px;
@@ -79,7 +79,7 @@ form {
 }
 
 #gender div,
-#submit:focus,
+#btn-submit:focus,
 #country > select:focus
 {
 	cursor: pointer;

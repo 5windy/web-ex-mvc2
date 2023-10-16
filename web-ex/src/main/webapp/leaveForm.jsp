@@ -1,3 +1,6 @@
+<%@page import="user.UserDao"%>
+<%@page import="user.UserResponseDto"%>
+<%@page import="user.User"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -8,11 +11,21 @@
 <jsp:include page="/header"/>
 <body>
 	<section>
-		<h2>로그인</h2>
-		<form method="POST" action="/api/user/login" id="form">
+		<%
+		String username = "";
+		
+		if(User.getLog() == User.LOGOUT) {
+			response.sendRedirect("login");
+		} else {
+			UserResponseDto user = UserDao.getInstance().findById(User.getLog());
+			username = user.getUsername();
+		}
+		%>
+		<h2>회원탈퇴</h2>
+		<form method="POST" action="/api/user/leave" id="form">
 			<div>
 				<div class="group">
-					<input type="text" name="username" id="username" placeholder="아이디">
+					<input type="text" name="username" id="username" value="<%=username%>" placeholder="<%=username%>" readonly>
 					<input type="password" name="password" id="password" placeholder="패스워드">
 				</div>
 				<div class="error-msg">
@@ -22,7 +35,7 @@
 					</ul>
 				</div>
 			</div>
-			<input type="button" value="login" id="btn-submit" onclick="checkForm(form)">
+			<input type="button" value="leave" id="btn-submit" onclick="checkForm(form)">
 		</form>
 	</section>
 	<script src="/resources/script/user-validation.js"></script>

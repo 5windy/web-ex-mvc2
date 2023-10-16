@@ -15,8 +15,11 @@ body {
 }
 
 header {
-	color: #0aaa5cff;
-	padding-top: 20px;
+	padding-top: 40px;
+}
+
+header a {
+	color: #0aaa5cff;	
 }
 
 footer {
@@ -30,7 +33,7 @@ footer {
 	padding: 20px;
 }
 
-h1 {
+h1, h2 {
 	text-align: center;
 }
 
@@ -49,6 +52,7 @@ a {
 	text-decoration: none;
 }
 
-a:hover {
+nav a:hover,
+section a:hover {
 	color: #0aaa5cff;
 }
