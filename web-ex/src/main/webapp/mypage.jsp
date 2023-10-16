@@ -11,11 +11,11 @@
 <body>
 <section>
 	<%
-	if(session.getAttribute("log") == null) {
-		response.sendRedirect("login");
-	}
+	if(session.getAttribute("log") == null)
+		response.sendRedirect("/login");
 	%>
-	<h2>${username }님 환영합니다.</h2>
+
+	<h2>${log }님 환영합니다.</h2>
 	
 	<a href="/api/user/logout">로그아웃</a>
 	<a href="/leave">회원탈퇴</a>

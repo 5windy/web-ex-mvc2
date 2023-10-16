@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.tomcat.dbcp.dbcp2.PStmtKey;
-
 import util.DBManager;
 
 public class UserDao {
@@ -97,15 +95,53 @@ public class UserDao {
 				
 			} catch (SQLException e) {
 				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
 			}
 		}
-		
 		return result;
 	}
 	
 	public UserResponseDto findByUsername(String username) {
+		UserResponseDto result = null;
 		
-		return null;
+		conn = DBManager.getConnection();
+		
+		if(conn != null) {
+			String sql = "SELECT * FROM `user` WHERE username=?";
+			
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, username);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					int id = rs.getInt(1);
+					String password = rs.getString(3);
+					String name = rs.getString(4);
+					String email = rs.getString(5);
+					String phone = rs.getString(6);
+					String country = rs.getString(7);
+					String birth = rs.getString(8);
+					int gender = rs.getInt(9);
+					
+					String genderStr = "";
+					if(gender == 1) genderStr = "male";
+					else if(gender == 2) genderStr = "female";
+					else if(gender == 3) genderStr = "other";
+					
+					result = new UserResponseDto(new User(id, username, password, name, email, phone, country, birth, genderStr));
+					System.out.println("result : " + result);
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				DBManager.close(conn, pstmt, rs);
+			}
+		}
+		return result;
 	}
 	/*
 	

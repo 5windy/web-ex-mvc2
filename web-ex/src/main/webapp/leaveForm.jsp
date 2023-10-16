@@ -11,16 +11,6 @@
 <jsp:include page="/header"/>
 <body>
 	<section>
-		<%
-		String username = "";
-		
-		if(User.getLog() == User.LOGOUT) {
-			response.sendRedirect("login");
-		} else {
-			UserResponseDto user = UserDao.getInstance().findById(User.getLog());
-			username = user.getUsername();
-		}
-		%>
 		<h2>회원탈퇴</h2>
 		<form method="POST" action="/api/user/leave" id="form">
 			<div>

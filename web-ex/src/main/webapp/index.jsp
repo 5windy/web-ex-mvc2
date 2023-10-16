@@ -10,11 +10,7 @@
 <body>
 	<section>
 		<p>Hello world</p>
-		
-		<%
-		UserDao dao = UserDao.getInstance();
-		dao.findById(1235);
-		%>
+	
 	</section>
 </body>
 <jsp:include page="/footer"/>
