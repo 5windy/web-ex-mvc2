@@ -50,7 +50,7 @@ public class LoginFormAction extends HttpServlet {
 		
 		if(user != null && password.equals(user.getPassword())) {
 			HttpSession session = request.getSession();
-			session.setAttribute("log", username);
+			session.setAttribute("log", user);
 			
 			url = "/mypage";
 		} else {

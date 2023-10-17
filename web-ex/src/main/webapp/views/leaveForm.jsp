@@ -10,12 +10,17 @@
 </head>
 <jsp:include page="/header"/>
 <body>
+	<%
+	if(session.getAttribute("log") == null)
+		response.sendRedirect("/login");
+	%>
+
 	<section>
 		<h2>회원탈퇴</h2>
 		<form method="POST" action="/api/user/leave" id="form">
 			<div>
 				<div class="group">
-					<input type="text" name="username" id="username" value="<%=username%>" placeholder="<%=username%>" readonly>
+					<input type="text" name="username" id="username" value="${log }" placeholder="${log }" readonly>
 					<input type="password" name="password" id="password" placeholder="패스워드">
 				</div>
 				<div class="error-msg">

@@ -22,43 +22,98 @@ public class UserDao {
 	
 	// DB에 연동 
 	// 1) Create
-	/*
 	public boolean createUser(UserRequestDto user) {
-		if(isDuplicatedUser(user)) 
+		if(isDuplicatedUser(user)) {
+			DBManager.close(conn, pstmt, rs);
 			return false;
+		}
 		
 		User newUser = new User(user);
 		newUser.setId(generateId());
-		list.add(newUser);
+		
+//		String sql = "INSERT INTO `user` VALUES(1234, 'apple', '1234', '김사과', 'apple@naver.com', '010-1234-1234', 'KR', DATE('19990909'), 1)";
+		String sql = "INSERT INTO `user` VALUES(?, ?, ?, ?, ?, ?, ?, DATE(?), ?)";
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, newUser.getId());
+			pstmt.setString(2, newUser.getUsername());
+			pstmt.setString(3, newUser.getPassword());
+			pstmt.setString(4, newUser.getName());
+			pstmt.setString(5, newUser.getEmail());
+			pstmt.setString(6, newUser.getPhone());
+			pstmt.setString(7, newUser.getCountry());
+			pstmt.setString(8, newUser.getBirth());
+			int gender = 1;
+			if(newUser.getGender().equals("female")) gender = 2; 
+			else if(newUser.getGender().equals("other")) gender = 3; 
+			pstmt.setInt(9, gender);
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
 		
 		return true;
 	}
 	
 	public boolean isDuplicatedUser(UserRequestDto user) {
 		
-		for(int i=0; i<list.size(); i++) {
-			if(user.getUsername().equals(list.get(i).getUsername()))
-				return true;
+		String sql = "SELECT COUNT(*) FROM `user` WHERE username=?";
+		
+		conn = DBManager.getConnection();
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUsername());
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int count = rs.getInt(1);
+				
+				if(count > 0) 
+					return true;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
+		
 		return false;
 	}
 	
 	private int generateId() {
 		int id = 0;
 		
+		String sql = "SELECT COUNT(*) FROM `user` WHERE id=?";
+				
 		boolean isDupl = false;
 		do {
 			id = (int) Math.floor(Math.random() * (9999-1000+1)) + 1000;	// 1000~9999
 
-			for(int i=0; i<list.size(); i++) {
-				if(list.get(i).getId() == id)
-					isDupl = true;
-			}
+			try {
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, id);
+				
+				rs = pstmt.executeQuery();
+				
+				if(rs.next()) {
+					int count = rs.getInt(1);
+					if(count > 0)
+						isDupl = true;
+					else 
+						isDupl = false;
+				}
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} 
 		} while(isDupl);
 		
 		return id;
 	}
-	*/
 	
 	// 2) Read
 	public UserResponseDto findById(int id) {
@@ -184,26 +239,34 @@ public class UserDao {
 		
 		return true;
 	}
+	 */
 	
 	// 4) Delete
 	public boolean deleteUser(UserRequestDto user) {
-		User target = getUser(user);
-		System.err.println("target : " + System.identityHashCode(target));
+		String sql = "DELETE FROM `user` WHERE username = ? AND password = ?";
 		
-		if(target == null)
-			return false;;
+		conn = DBManager.getConnection();
 		
-		if(!target.getPassword().equals(user.getPassword()))
-			return false;
-		
-		list.remove(target);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getUsername());
+			pstmt.setString(2, user.getPassword());
 			
-		return true;
+			pstmt.execute();
+			
+			return true;
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
+		
+		return false;
 	}
 	
-	public int getSize() {
-		return list.size();
-	}
-	*/
+//	public int getSize() {
+//		return list.size();
+//	}
 
 }
