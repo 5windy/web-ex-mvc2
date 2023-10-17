@@ -16,6 +16,16 @@
 	<!-- Servlet Mapping -->
 	
 	<servlet>
+		<servlet-name>ServiceServlet</servlet-name>
+		<servlet-class>controller.ServiceServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ServiceServlet</servlet-name>
+		<url-pattern>/service</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
 		<servlet-name>joinFormAction</servlet-name>
 		<servlet-class>user.controller.JoinFormAction</servlet-class>
 	</servlet>
@@ -33,16 +43,6 @@
 	<servlet-mapping>
 		<servlet-name>leaveFormAction</servlet-name>
 		<url-pattern>/api/user/leave</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>loginFormAction</servlet-name>
-		<servlet-class>user.controller.LoginFormAction</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>loginFormAction</servlet-name>
-		<url-pattern>/api/user/login</url-pattern>
 	</servlet-mapping>
 	
 	<servlet>

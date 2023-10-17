@@ -9,7 +9,8 @@
 <body>
 	<section>
 		<h2>로그인</h2>
-		<form method="POST" action="/api/user/login" id="form">
+		<form method="POST" action="/service" id="form">
+			<input type="hidden" name="command" value="login">
 			<div>
 				<div class="group">
 					<input type="text" name="username" id="username" placeholder="아이디">
