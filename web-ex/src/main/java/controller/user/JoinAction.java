@@ -1,32 +1,19 @@
-package user.controller;
+package controller.user;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import user.UserDao;
-import user.UserRequestDto;
+import controller.Action;
+import model.user.UserDao;
+import model.user.UserRequestDto;
 
-public class JoinFormAction extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public JoinFormAction() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+public class JoinAction implements Action {
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		
+	@Override
+	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		String email = request.getParameter("email");
@@ -47,6 +34,7 @@ public class JoinFormAction extends HttpServlet {
 			url = "/login";
 		
 		response.sendRedirect(url);
+		
 	}
 
 }

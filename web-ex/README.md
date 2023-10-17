@@ -12,34 +12,48 @@
 │   └── org.eclipse.wst.jsdt.ui.superType.name
 ├── README.md
 ├── bin
-│   ├── user
-│   │   ├── User.class
-│   │   ├── UserDao.class
-│   │   ├── UserRequestDto.class
-│   │   ├── UserResponseDto.class
-│   │   └── controller
-│   │       ├── EditUserFormAction.class
-│   │       ├── JoinFormAction.class
-│   │       ├── LeaveFormAction.class
-│   │       ├── LoginFormAction.class
+│   ├── controller
+│   │   ├── Action.class
+│   │   ├── ActionFactory.class
+│   │   ├── ServiceServlet.class
+│   │   ├── board
+│   │   └── user
+│   │       ├── EditUserAction.class
+│   │       ├── JoinAction.class
+│   │       ├── LeaveAction.class
+│   │       ├── LoginAction.class
 │   │       └── LogoutAction.class
+│   ├── model
+│   │   ├── board
+│   │   └── user
+│   │       ├── User.class
+│   │       ├── UserDao.class
+│   │       ├── UserRequestDto.class
+│   │       └── UserResponseDto.class
 │   └── util
 │       └── DBManager.class
 ├── replacements.txt
 └── src
     └── main
         ├── java
-        │   ├── user
-        │   │   ├── User.java
-        │   │   ├── UserDao.java
-        │   │   ├── UserRequestDto.java
-        │   │   ├── UserResponseDto.java
-        │   │   └── controller
-        │   │       ├── EditUserFormAction.java
-        │   │       ├── JoinFormAction.java
-        │   │       ├── LeaveFormAction.java
-        │   │       ├── LoginFormAction.java
+        │   ├── controller
+        │   │   ├── Action.java
+        │   │   ├── ActionFactory.java
+        │   │   ├── ServiceServlet.java
+        │   │   ├── board
+        │   │   └── user
+        │   │       ├── EditUserAction.java
+        │   │       ├── JoinAction.java
+        │   │       ├── LeaveAction.java
+        │   │       ├── LoginAction.java
         │   │       └── LogoutAction.java
+        │   ├── model
+        │   │   ├── board
+        │   │   └── user
+        │   │       ├── User.java
+        │   │       ├── UserDao.java
+        │   │       ├── UserRequestDto.java
+        │   │       └── UserResponseDto.java
         │   └── util
         │       └── DBManager.java
         └── webapp
@@ -61,10 +75,12 @@
             │       ├── grid.css
             │       └── table.css
             └── views
-                ├── editUserForm.jsp
-                ├── joinForm.jsp
-                ├── leaveForm.jsp
-                ├── loginForm.jsp
-                ├── mypage.jsp
-                └── userlist.jsp
+                ├── board
+                └── user
+                    ├── editUserForm.jsp
+                    ├── joinForm.jsp
+                    ├── leaveForm.jsp
+                    ├── loginForm.jsp
+                    ├── mypage.jsp
+                    └── userlist.jsp
 ```

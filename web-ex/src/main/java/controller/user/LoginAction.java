@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import controller.Action;
-import user.UserDao;
-import user.UserResponseDto;
+import model.user.UserDao;
+import model.user.UserResponseDto;
 
 public class LoginAction implements Action {
 

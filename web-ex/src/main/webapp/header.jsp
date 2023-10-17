@@ -17,7 +17,7 @@
 			<li><a href="/join">회원가입</a></li>
 			<li><a href="/login">로그인</a></li>
 			<li><a href="/mypage">마이페이지</a></li>
-			<li><a href="/api/user/all">회원목록 조회</a></li>
+			<li><a href="/users">회원목록 조회</a></li>
 		</ul>
 	</nav>
 </body>

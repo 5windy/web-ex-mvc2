@@ -25,46 +25,6 @@
 		<url-pattern>/service</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>joinFormAction</servlet-name>
-		<servlet-class>user.controller.JoinFormAction</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>joinFormAction</servlet-name>
-		<url-pattern>/api/user/join</url-pattern>
-	</servlet-mapping>
-	
-		<servlet>
-		<servlet-name>leaveFormAction</servlet-name>
-		<servlet-class>user.controller.LeaveFormAction</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>leaveFormAction</servlet-name>
-		<url-pattern>/api/user/leave</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>logoutAction</servlet-name>
-		<servlet-class>user.controller.LogoutAction</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>logoutAction</servlet-name>
-		<url-pattern>/api/user/logout</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
-		<servlet-name>editUserFormAction</servlet-name>
-		<servlet-class>user.controller.EditUserFormAction</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>editUserFormAction</servlet-name>
-		<url-pattern>/api/user/edit</url-pattern>
-	</servlet-mapping>
-
 	<!-- JSP file Mapping -->
 	<servlet>
 		<servlet-name>index</servlet-name>
@@ -98,7 +58,7 @@
 
 	<servlet>
 		<servlet-name>joinForm</servlet-name>
-		<jsp-file>/views/joinForm.jsp</jsp-file>
+		<jsp-file>/views/user/joinForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -108,7 +68,7 @@
 	
 	<servlet>
 		<servlet-name>loginForm</servlet-name>
-		<jsp-file>/views/loginForm.jsp</jsp-file>
+		<jsp-file>/views/user/loginForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -118,7 +78,7 @@
 	
 	<servlet>
 		<servlet-name>leaveForm</servlet-name>
-		<jsp-file>/views/leaveForm.jsp</jsp-file>
+		<jsp-file>/views/user/leaveForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -128,7 +88,7 @@
 
 	<servlet>
 		<servlet-name>mypage</servlet-name>
-		<jsp-file>/views/mypage.jsp</jsp-file>
+		<jsp-file>/views/user/mypage.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -138,7 +98,7 @@
 	
 	<servlet>
 		<servlet-name>editUserForm</servlet-name>
-		<jsp-file>/views/editUserForm.jsp</jsp-file>
+		<jsp-file>/views/user/editUserForm.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
@@ -148,12 +108,12 @@
 	
 	<servlet>
 		<servlet-name>userListPage</servlet-name>
-		<jsp-file>/views/userlist.jsp</jsp-file>
+		<jsp-file>/views/user/userlist.jsp</jsp-file>
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>userListPage</servlet-name>
-		<url-pattern>/api/user/all</url-pattern>
+		<url-pattern>/users</url-pattern>
 	</servlet-mapping>
 
 </web-app>

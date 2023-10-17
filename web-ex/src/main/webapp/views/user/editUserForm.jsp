@@ -9,15 +9,21 @@
 </head>
 <jsp:include page="/header"/>
 <body>
+	<%
+	if(session.getAttribute("log") == null)
+		response.sendRedirect("/login");
+	%>
+
 	<section>
-		<h2>회원가입</h2>
-		<form method="POST" action="/api/user/join" id="form">
+		<h2>회원정보 수정</h2>
+		<form method="POST" action="/service" id="form">
+			<input type="hidden" name="command" value="update-user">
 			<div>
-	
 				<div class="group">
-					<input type="text" name="username" id="username" placeholder="아이디">
+					<input type="text" name="username" id="username" value="${log.username}" readonly>
+					<input type="hidden" name="id" id="id" value="${log.id}">
 					<input type="password" name="password" id="password" placeholder="비밀번호"> 
-					<input type="email" name="email" id="email" placeholder="이메일 (Optional)">
+					<input type="email" name="email" id="email" value="${log.email }">
 				</div>
 				<div class="error-msg">
 					<ul>
@@ -27,12 +33,12 @@
 				</div>
 				
 				<div class="group">
-					<input type="text" name="name" id="name" placeholder="이름"> 
-					<input type="number" name="birth" id="birth" min="19000101" max="99999999" placeholder="생년월일"> 
+					<input type="text" name="name" id="name" value="${log.name }" readonly> 
+					<input type="text" name="birth" id="birth" value="${log.birth}" readonly> 
 					
-					<input type="radio" name="gender" value="male" id="male" checked> 
-					<input type="radio" name="gender" value="female" id="female"> 
-					<input type="radio" name="gender" value="other" id="other">
+					<input type="radio" name="gender" value="male" id="male" ${log.gender eq 'male' ? 'checked' : ''} > 
+					<input type="radio" name="gender" value="female" id="female" ${log.gender eq 'female' ? 'checked' : ''}> 
+					<input type="radio" name="gender" value="other" id="other" ${log.gender eq 'other' ? 'checked' : ''}>
 					
 					<div id="gender">
 						<label for="male" id="for-male">
@@ -47,15 +53,15 @@
 					</div>
 					<div id="country">
 						<select name="country">
-							<option value="id">India +91</option>
-							<option value="jp">Japan +81</option>
-							<option value="ko" selected>Korea +82</option>
-							<option value="mc">Macao +853</option>
-							<option value="tg">Togo +228</option>
-							<option value="ym">Yemen +967</option>
+							<option value="id" ${log.country eq 'id' ? 'selected' : ''} >India +91</option>
+							<option value="jp" ${log.country eq 'jp' ? 'selected' : ''}>Japan +81</option>
+							<option value="ko" ${log.country eq 'ko' ? 'selected' : ''}>Korea +82</option>
+							<option value="mc" ${log.country eq 'mc' ? 'selected' : ''}>Macao +853</option>
+							<option value="tg" ${log.country eq 'tg' ? 'selected' : ''}>Togo +228</option>
+							<option value="ym" ${log.country eq 'ym' ? 'selected' : ''}>Yemen +967</option>
 						</select> 
 					</div>
-					<input type="text" name="phone" id="phone" placeholder="전화번호 ###-####-####">
+					<input type="text" name="phone" id="phone" value="${log.phone }">
 				</div>
 				<div class="error-msg">
 					<ul>
