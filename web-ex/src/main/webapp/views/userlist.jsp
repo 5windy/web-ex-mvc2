@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="/resources/style/table.css">
 </head>
 <jsp:include page="/header"/>
 <body>
