@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import util.DBManager;
 
@@ -212,34 +213,79 @@ public class UserDao {
 		
 		return user;
 	}
+	 */
 	
 	public ArrayList<UserResponseDto> findAll() {
-		// private list 리턴 X (사본) 
-		ArrayList<UserResponseDto> response = new ArrayList<>();
+		ArrayList<UserResponseDto> list = new ArrayList<>();
 		
-		for(int i=0; i<list.size(); i++) {
-			User user = list.get(i);
-			response.add(new UserResponseDto(user));
+		String sql = "SELECT * FROM `user`";
+		
+		conn = DBManager.getConnection();
+		
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int id = rs.getInt(1);
+				String username = rs.getString(2);
+				String password = rs.getString(3);
+				String name = rs.getString(4);
+				String email = rs.getString(5);
+				String phone = rs.getString(6);
+				String country = rs.getString(7);
+				String birth = rs.getString(8);
+				int gender = rs.getInt(9);
+				
+				String genderStr = "";
+				if(gender == 1) genderStr = "male";
+				else if(gender == 2) genderStr = "female";
+				else if(gender == 3) genderStr = "other";
+				
+				UserResponseDto user = null;
+				user = new UserResponseDto(new User(id, username, password, name, email, phone, country, birth, genderStr));
+				
+				list.add(user);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
 		}
-		
-		return response;
+		return list;
 	}
 	
-	// 3) Update (password)
-	public boolean setUser(UserRequestDto user, String password) {
-		User target = getUser(user);
+	// 3) Update
+	public boolean setUser(UserRequestDto user) {
 		
-		if(target == null)
-			return false;
+		String sql = "UPDATE `user` SET password = ?, email = ?, gender = ?, country = ?, phone = ? WHERE id = ?";
 		
-		if(!target.getPassword().equals(user.getPassword()))
-			return false;
+		conn = DBManager.getConnection();
 		
-		target.setPassword(password);
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, user.getPassword());
+			pstmt.setString(2, user.getEmail());
+			int gender = 1;
+			if(user.getGender().equals("female")) gender = 2;
+			else if(user.getGender().equals("other")) gender = 2;
+			pstmt.setInt(3, gender);
+			pstmt.setString(4, user.getCountry());
+			pstmt.setString(5, user.getPhone());
+			pstmt.setInt(6, user.getId());
+			
+			pstmt.execute();
+			
+			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt);
+		}
 		
-		return true;
+		return false;
 	}
-	 */
 	
 	// 4) Delete
 	public boolean deleteUser(UserRequestDto user) {

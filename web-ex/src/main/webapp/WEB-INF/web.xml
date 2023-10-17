@@ -55,6 +55,15 @@
 		<url-pattern>/api/user/logout</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>editUserFormAction</servlet-name>
+		<servlet-class>user.controller.EditUserFormAction</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>editUserFormAction</servlet-name>
+		<url-pattern>/api/user/edit</url-pattern>
+	</servlet-mapping>
 
 	<!-- JSP file Mapping -->
 	<servlet>
@@ -135,6 +144,16 @@
 	<servlet-mapping>
 		<servlet-name>editUserForm</servlet-name>
 		<url-pattern>/edit</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>userListPage</servlet-name>
+		<jsp-file>/views/userlist.jsp</jsp-file>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>userListPage</servlet-name>
+		<url-pattern>/api/user/all</url-pattern>
 	</servlet-mapping>
 
 </web-app>

@@ -44,7 +44,7 @@ public class LoginFormAction extends HttpServlet {
 		UserDao userDao = UserDao.getInstance();
 		UserResponseDto user = userDao.findByUsername(username);
 		
-		String url = "";
+		String url = "/login";
 		
 		System.out.println("user : " + user);
 		
@@ -53,9 +53,7 @@ public class LoginFormAction extends HttpServlet {
 			session.setAttribute("log", user);
 			
 			url = "/mypage";
-		} else {
-			url = "/login";
-		}
+		} 
 		
 		response.sendRedirect(url);
 	}

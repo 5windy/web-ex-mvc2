@@ -15,7 +15,7 @@
 		response.sendRedirect("/login");
 	%>
 
-	<h2>${log }님 환영합니다.</h2>
+	<h2>${log.username }님 환영합니다.</h2>
 	
 	<a href="edit">회원정보 수정</a>
 	<a href="/api/user/logout">로그아웃</a>
