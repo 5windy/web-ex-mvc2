@@ -29,8 +29,10 @@ public class ServiceServlet extends HttpServlet {
 		// Command Pattern 
 		String command = request.getParameter("command");
 		
-		if(command == null)
+		if(command == null) {
 			response.sendRedirect("/");
+			return;
+		}
 		
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
