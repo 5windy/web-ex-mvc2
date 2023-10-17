@@ -1,8 +1,8 @@
 <%@page import="model.user.UserDao"%>
 <%@page import="model.user.UserResponseDto"%>
 <%@page import="model.user.User"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,10 +10,14 @@
 <jsp:include page="/header"/>
 <body>
 <section>
-	<%
+	<%--
 	if(session.getAttribute("log") == null)
 		response.sendRedirect("/login");
-	%>
+	--%>
+	
+	<c:if test="${empty log }">
+		<c:redirect url="/login"/>
+	</c:if>
 
 	<h2>${log.username }님 환영합니다.</h2>
 	
